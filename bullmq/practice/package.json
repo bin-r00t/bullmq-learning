@@ -1,0 +1,13 @@
+{
+  "name": "bullmq-practice",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "BullMQ 学习域的动手练习环境（对接本地 Redis :6390）",
+  "scripts": {
+    "s02": "node s02-minimal.js"
+  },
+  "dependencies": {
+    "bullmq": "^6.3.9"
+  }
+}

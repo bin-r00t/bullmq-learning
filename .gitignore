@@ -1,0 +1,24 @@
+# 本地练习环境（Redis 源码/二进制/数据，约 250 MB，不随仓库分发）
+.tools/
+
+# Node 依赖
+node_modules/
+
+# 运行产物
+*.log
+*.pid
+data/
+dump.rdb
+appendonlydir/
+
+# 编辑器与系统文件
+.DS_Store
+.idea/
+.vscode/
+
+# 脱敏规则本身（含原始敏感串，绝不入库）
+.publish-redact.txt
+
+# 由 scripts/publish.sh 生成的公开镜像（独立仓库，不放在工作区里管理）
+learning-publish/
+.publish-mirror
