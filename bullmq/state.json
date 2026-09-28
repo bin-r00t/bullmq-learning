@@ -10,8 +10,8 @@
   },
   "weekly_hours": 7.0,
   "plan_version": "v1",
-  "round": 2,
-  "last_log_at": "2026-09-28T14:01:49+08:00",
+  "round": 4,
+  "last_log_at": "2026-09-28T15:54:41+08:00",
   "topics": [
     {
       "id": "S01",
@@ -25,13 +25,16 @@
       "forgetting": "慢",
       "verify": "覆盖 T01+T02｜口述 Queue/Worker/QueueEvents/FlowProducer 的职责，并说明 BullMQ 与 Kafka/SQS 的选型差异",
       "self_rating": 0.0,
-      "status": "learning",
-      "mastery": 0.0,
-      "feynman_rounds": 0,
-      "interval_index": 0,
-      "last_reviewed_at": null,
-      "next_review_at": null,
-      "errors": []
+      "status": "done",
+      "mastery": 0.8,
+      "feynman_rounds": 2,
+      "interval_index": 1,
+      "last_reviewed_at": "2026-09-28",
+      "next_review_at": "2026-09-30",
+      "errors": [
+        "2026-09-28 首次复述 2.9/5：① 把 BullMQ 描述成 push 模型（实际是 Worker 主动拉取 pull）；② QueueEvents 讲成「强调约定 vs 自定义」（实际是跨进程事件流 vs Worker 进程内事件）；③ 未答出 at-least-once 与「可能重复执行」，把「不丢」绝对化；④ 认为非 Node/TS 团队不该用（实际有 Python/Rust/Elixir/PHP/.NET 绑定）；⑤ 进程内队列适用条件说反（应为可容忍丢失的任务）；⑥ FlowProducer 的原子依赖树语义未答出",
+        "2026-09-28 复测 4.0/5 通过（压线 0.80）：① pull 模型（含背压、生产者不维护处理状态、掉线重派）② QueueEvents 跨进程定位 ③ at-least-once + 业务幂等 三处均已澄清 [已澄清]；[待复测] FlowProducer 的原子依赖树语义 + Job 状态名清单，安排到 09-30 复习与 S03 一并复核"
+      ]
     },
     {
       "id": "S02",
@@ -47,7 +50,7 @@
       "forgetting": "快",
       "verify": "覆盖 T04+T07｜本地跑通生产+消费，并说出常用 opts 各自影响的行为",
       "self_rating": 2.0,
-      "status": "todo",
+      "status": "learning",
       "mastery": 0.0,
       "feynman_rounds": 0,
       "interval_index": 0,

@@ -107,7 +107,8 @@ graph LR
 | 事项 | 为什么不确定 | 怎么确认 | 状态 |
 | --- | --- | --- | --- |
 | v6 完整变更清单 | 只读了官方 v5→v6 迁移页与 npm 元数据，未逐条读 changelog-v6 与 API Reference | 学 S10 时抓 `/changelogs/changelog-v6` 与 API Reference 核对 | 未核实 |
-| `removeOnComplete` / `removeOnFail` 默认保留策略 | 该默认值在多个大版本间调整过，凭记忆易错 | 学 S08 时读 `guide/queues/auto-removal-of-jobs` | 未核实 |
+| `removeOnComplete` / `removeOnFail` 默认保留策略 | 该默认值在多个大版本间调整过，凭记忆易错 | **已实测（2026-09-28，bullmq 6.3.9 + Redis 8.10.2）**：不传 `removeOnComplete` 时完成的 job **会保留**——3 条任务全部完成后 `completed=3`，`bull:<queue>:1..3` 三个 job hash 仍在，无自动清理。S08 再补读官方 auto-removal 页确认是否有数量上限 | **已核实（实测）** |
+| 普通 job 的 `job.id` 默认形态 | v5→v6 迁移页只说 flow 里未指定 jobId 的节点改为 UUID，普通 add 未说明 | **已实测**：普通 `add()` 生成递增整数（本机跑出 `id=1`、`id=2`）；对应 Redis 里有 `bull:<queue>:id` 计数器 key | **已核实（实测）** |
 | worker limiter / global rate limit 的引入版本与语义边界 | v5 期间仍在迭代 | 学 S07 时读 `guide/rate-limiting`、`guide/queues/global-rate-limit` | 未核实 |
 | Redis 最低版本要求与 v6 是否变化 | 未读官方要求页 | 学 S02/S08 时读 `guide/connections` | 未核实 |
 | v6 PostgreSQL 后端在生产环境的成熟度 | 官方定位为可选后端，称 Redis 仍是最经考验 | 读 `guide/postgresql` 全文 | 部分核实 |
