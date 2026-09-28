@@ -24,5 +24,5 @@ fi
 git add -A
 git commit -q -m "sync: $(date '+%Y-%m-%d %H:%M') 学习工作区更新"
 echo "[推送] $(git remote get-url origin)"
-git push
+git push -u origin HEAD
 echo "[完成] 已同步 $(git rev-parse --short HEAD)"
