@@ -65,3 +65,19 @@ cd bullmq/practice && npm install bullmq
 
 - 本仓库是个人学习记录：计划、讲义、日志、面试问答都会持续追加。
 - 讲义里的 API 行为尽量标注了来源与核实状态（`已核实` / `未核实`），未核实项会写明确认方式。
+
+## 两个仓库的分工
+
+| 仓库 | 内容 | 用途 |
+| --- | --- | --- |
+| **本仓库（private）** | 原始工作区：真实绝对路径、真实业务场景、脱敏规则文件，全部保留 | 跨机器接手、完整可追溯 |
+| 公开镜像（`bullmq-learning`） | 由 `scripts/publish.sh` 生成的**脱敏**副本 | 对外分享 |
+
+同步命令：
+
+```bash
+bash scripts/sync-private.sh   # 原始版 → private 仓库
+bash scripts/sync-public.sh    # 脱敏版 → 公开仓库
+```
+
+在**另一台电脑**上接手的步骤：克隆本仓库 → 重建练习环境（见上「本地练习环境」）→ 让 agent 读 `bullmq/AGENTS.md` 与 `bullmq/state.json`，按 `bullmq/PLAN.md` 的阶段继续。注意 `PLAN.md` 与 `state.json` 里记的是**原来那台机器的绝对路径**，必要时先按新机器路径更新这两处。
